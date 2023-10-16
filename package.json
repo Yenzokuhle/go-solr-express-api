@@ -1,0 +1,43 @@
+{
+  "name": "go-solr-api",
+  "version": "1.0.0",
+  "description": "back-end app for Go Solr Calculator",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "nodemon-start:prod": "SET NODE_ENV=production&& nodemon server.js",
+    "debug": "ndb server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "test": "jest"
+  },
+  "author": "Yenzokuhle",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-xss-sanitizer": "^1.1.6",
+    "helmet": "^7.0.0",
+    "jest": "^29.7.0",
+    "superagent": "^8.1.2",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": "^18"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
