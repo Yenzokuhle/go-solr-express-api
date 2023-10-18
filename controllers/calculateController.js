@@ -39,33 +39,29 @@ const calculateSaving = (consumption, avgDailyCost) => {
   }
 };
 
-//method: create and sign our token
-exports.computeSolutionName = (req, res, next) => {
+exports.computeSolution = (req, res, next) => {
   const { amount } = req.body;
   const solution = getRecommendedSolution(amount);
   const monthlyConsumption = Math.ceil(calcuateMonthlyConsumption(amount));
-  console.log(`Monthly consumption: ${monthlyConsumption}`);
+
   const savings = Math.floor(
     calculateSaving(monthlyConsumption, solution.avgDailyProd)
   );
-  console.log(`Monthly savings: ${savings}`);
 
   req.solution = solution.size;
   req.solutionPrice = solution.costCurrent;
   req.monthlyConsumption = monthlyConsumption;
   req.savings = savings;
   req.total = amount - savings + solution.costCurrent;
-  //everything OK, send to client
   next();
 };
 
-//method for calculating energy consumption
+//method for responding with recommended energy solution
 exports.calculate = catchAsync(async (req, res, next) => {
   const { amount } = req.body;
 
   console.log(`This is the incoming amount: ${amount}`);
 
-  //everything OK, send to client
   res.status(200).json({
     status: 'success',
     data: {

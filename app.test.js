@@ -10,4 +10,6 @@ describe('Incoming POST Endpoint checks', () => {
     expect(res.status).toEqual(200);
     expect(res.body.data).toHaveProperty('amount');
   });
+
+  test('computeSolution', () => {});
 });

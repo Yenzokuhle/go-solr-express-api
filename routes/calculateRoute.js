@@ -9,7 +9,7 @@ const router = express.Router();
 //PUBLIC ROUTES
 router.post(
   '/calculate',
-  calculateController.computeSolutionName,
+  calculateController.computeSolution,
   calculateController.calculate
 );
 
